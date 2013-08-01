@@ -69,8 +69,13 @@ public class ShindigGadgetMetadataService implements GadgetMetadataService {
     public WidgetModel getGadgetMetadata(String gadgetUrl) {
         try {
             MetadataResponse metaDataFromShindig = getMetaDataFromShindig(gadgetUrl);
+            java.util.Map<String,String> ifrs=metaDataFromShindig.getIframeUrls();
+            
             WidgetModel model = new WidgetModel();
-            model.setIframeUrl("http:" + metaDataFromShindig.getIframeUrl());
+            if (ifrs.containsKey("default")) {
+                String value=ifrs.get("default");
+                model.setIframeUrl("http:" + value);
+            }
             model.setName(metaDataFromShindig.getModulePrefs().getTitle());
             model.setSpecUrl(gadgetUrl);
 
@@ -161,7 +166,7 @@ public class ShindigGadgetMetadataService implements GadgetMetadataService {
                 .put("st", "default")
                 .put("debug", true)
                 .append("ids", gadgetUrl)
-                .append("fields", "iframeUrl")
+                .append("fields", "iframeUrls")
                 .append("fields", "modulePrefs.*")
                 .append("fields", "needsTokenRefresh")
                 .append("fields", "userPrefs.*")

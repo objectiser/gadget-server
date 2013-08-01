@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.overlord.gadgets.server</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0.0.Final</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Gadget Server</name>
 	<url>http://www.jboss.org/overlord</url>
@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.jboss</groupId>
 		<artifactId>jboss-parent</artifactId>
-		<version>10</version>
+		<version>8</version>
 	</parent>
 
 	<scm>
@@ -64,9 +64,9 @@
 		<jbossas.version>7.1.1.Final</jbossas.version>
 		<json.version>20070829</json.version>
 		<resteasy.version>2.3.6.Final</resteasy.version>
-		<shindig.version>3.0.0-beta4</shindig.version>
+		<shindig.version>2.5.0-beta6</shindig.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<guava.version>10.0.1</guava.version>
+		<guava.version>13.0.1</guava.version>
 		<httpcore.version>4.1.2</httpcore.version>
 		<nekohtml.version>1.9.15</nekohtml.version>
 		<joda-time.version>2.0</joda-time.version>

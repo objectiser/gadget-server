@@ -18,6 +18,8 @@ package org.overlord.gadgets.web.server;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -49,6 +51,8 @@ import com.google.inject.Inject;
  */
 @Path("/users")
 public class UserController {
+    
+    private static final Logger LOG=Logger.getLogger(UserController.class.getName());
 
     @Inject
     private UserManager userManager;
@@ -105,12 +109,14 @@ public class UserController {
 
             for (Widget widget :page.getWidgets()) {
                 WidgetModel widgetModel = metadataService.getGadgetMetadata(widget.getAppUrl().replace("${server}", serverBaseUrl));
+                /*
                 widgetModel.setWidgetId(widget.getId());
                 widgetModel.setOrder(widget.getOrder());
 
                 populateWidgetsDefaultValue(widget, widgetModel);
 
                 pageModel.addModel(widgetModel);
+            */
             }
 
             pageModels.add(pageModel);
