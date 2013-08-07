@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shindig.auth.AnonymousSecurityToken;
+import org.apache.shindig.common.uri.Uri;
 import org.apache.shindig.gadgets.servlet.GadgetsHandler;
 import org.apache.shindig.gadgets.servlet.GadgetsHandlerApi.BaseResponse;
 import org.apache.shindig.gadgets.servlet.GadgetsHandlerApi.EnumValuePair;
@@ -69,12 +70,12 @@ public class ShindigGadgetMetadataService implements GadgetMetadataService {
     public WidgetModel getGadgetMetadata(String gadgetUrl) {
         try {
             MetadataResponse metaDataFromShindig = getMetaDataFromShindig(gadgetUrl);
-            java.util.Map<String,String> ifrs=metaDataFromShindig.getIframeUrls();
+            java.util.Map<String,Uri> ifrs=metaDataFromShindig.getIframeUrls();
             
             WidgetModel model = new WidgetModel();
             if (ifrs.containsKey("default")) {
-                String value=ifrs.get("default");
-                model.setIframeUrl("http:" + value);
+                Uri value=ifrs.get("default");
+                model.setIframeUrl("http:" + value.toString());
             }
             model.setName(metaDataFromShindig.getModulePrefs().getTitle());
             model.setSpecUrl(gadgetUrl);
